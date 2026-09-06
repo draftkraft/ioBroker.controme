@@ -8,7 +8,7 @@ const utils = require('@iobroker/adapter-core');
 const axios = require('axios').default;
 const dayjs = require('dayjs');
 const formData = require('form-data');
-const { isObject } = require('iobroker.controme/lib/tools');
+const { extractSensorID, isObject } = require('iobroker.controme/lib/tools');
 
 function roundTo(number, decimals = 0) {
     return Math.round(number * Math.pow(10, decimals)) / Math.pow(10, decimals);
@@ -1512,8 +1512,7 @@ class Controme extends utils.Adapter {
 
     // Utility method to extract sensor ID
     extractSensorID(id) {
-        const match = id.match(/\.sensors\.([0-9a-f_:]+)\./);
-        return match ? match[1] : null;
+        return extractSensorID(id);
     }
 
     // Utility method to extract API ID for offsets
