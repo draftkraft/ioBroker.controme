@@ -45,6 +45,7 @@ class Controme extends utils.Adapter {
         });
         this.delayPolling = false; // is set when a connection error is detected and prevents polling
         this.delayPollingCounter = 0; // controls the duration, for which polling is delayed
+        this.activeSensorWarnings = new Set();
         this.on('ready', this.onReady.bind(this));
         this.on('stateChange', this.onStateChange.bind(this));
         // this.on("objectChange", this.onObjectChange.bind(this));
@@ -1349,7 +1350,8 @@ class Controme extends utils.Adapter {
         } else if (typeof sensorValue === 'number') {
             promises.push(...this._handleNumericSensorValue(room, sensor, sensorPath, sensorValue));
         } else if (this.config.warnOnNull) {
-            this.log.warn(
+            this._warnSensorOnce(
+                sensorPath,
                 `Room ${room.id}: Temperature value for sensor ${this.objSafeName(sensor.name)} is null or empty`,
             );
         }
@@ -1362,6 +1364,7 @@ class Controme extends utils.Adapter {
         const temperature = sensorValue.Temperatur;
 
         if (temperature !== null && temperature !== undefined && !isNaN(parseFloat(temperature))) {
+            this._clearSensorWarning(sensorPath, room, sensor);
             this.log.silly(
                 `Updating ${sensorPath}: ${this.objSafeName(sensor.name)} (${sensor.beschreibung}) to ${temperature} °C`,
             );
@@ -1369,7 +1372,8 @@ class Controme extends utils.Adapter {
                 this.setStateChangedAsync(`${sensorPath}.actualTemperature`, roundTo(parseFloat(temperature), 2), true),
             );
         } else if (this.config.warnOnNull) {
-            this.log.warn(
+            this._warnSensorOnce(
+                sensorPath,
                 `Room ${room.id}: Temperature value for sensor ${this.objSafeName(sensor.name)} is undefined, null or not a number`,
             );
         }
@@ -1381,17 +1385,36 @@ class Controme extends utils.Adapter {
         const promises = [];
 
         if (sensorValue !== null && sensorValue !== undefined && !isNaN(sensorValue)) {
+            this._clearSensorWarning(sensorPath, room, sensor);
             this.log.silly(
                 `Updating ${sensorPath}: ${this.objSafeName(sensor.name)} (${sensor.beschreibung}) to ${roundTo(sensorValue, 2)} °C`,
             );
             promises.push(this.setStateChangedAsync(`${sensorPath}.actualTemperature`, roundTo(sensorValue, 2), true));
-        } else {
-            this.log.warn(
+        } else if (this.config.warnOnNull) {
+            this._warnSensorOnce(
+                sensorPath,
                 `Room ${room.id}: Value for sensor ${this.objSafeName(sensor.name)} is undefined, null or not a number`,
             );
         }
 
         return promises;
+    }
+
+    _warnSensorOnce(sensorPath, message) {
+        if (this.activeSensorWarnings.has(sensorPath)) {
+            return;
+        }
+        this.activeSensorWarnings.add(sensorPath);
+        this.log.warn(message);
+    }
+
+    _clearSensorWarning(sensorPath, room, sensor) {
+        if (!this.activeSensorWarnings.delete(sensorPath)) {
+            return;
+        }
+        this.log.info(
+            `Room ${room.id}: Temperature value for sensor ${this.objSafeName(sensor.name)} is available again`,
+        );
     }
 
     _updateOutputsForRoom(room) {

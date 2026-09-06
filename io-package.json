@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "controme",
-        "version": "0.5.9",
+        "version": "0.5.10",
         "news": {
+            "0.5.10": {
+                "en": "Deduplicated missing sensor warnings until the sensor recovers",
+                "de": "Warnungen über fehlende Sensorwerte bis zur Wiederherstellung dedupliziert",
+                "ru": "Повторные предупреждения об отсутствующих значениях датчиков подавляются до восстановления",
+                "pt": "Avisos repetidos de sensores ausentes são suprimidos até à recuperação",
+                "nl": "Herhaalde waarschuwingen over ontbrekende sensorwaarden onderdrukt tot herstel",
+                "fr": "Avertissements répétés de valeurs de capteur manquantes supprimés jusqu'au rétablissement",
+                "it": "Avvisi ripetuti sui valori mancanti dei sensori soppressi fino al ripristino",
+                "es": "Avisos repetidos de valores de sensor ausentes suprimidos hasta la recuperación",
+                "pl": "Powtarzające się ostrzeżenia o braku wartości czujnika wyciszone do czasu przywrócenia",
+                "uk": "Повторні попередження про відсутні значення датчика вимкнено до відновлення",
+                "zh-cn": "在传感器恢复之前不再重复发出缺失值警告"
+            },
             "0.5.9": {
                 "en": "Stopped warnings for expected missing humidity measurements",
                 "de": "Warnungen für erwartungsgemäß fehlende Luftfeuchtigkeitsmessungen entfernt",

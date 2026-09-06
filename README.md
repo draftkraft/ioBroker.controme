@@ -88,6 +88,9 @@ To start the adapter, the following data need to be provided in the admin settin
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 0.5.10 (2026-09-06)
+* (draftkraft) Deduplicated missing sensor warnings until the sensor recovers
+
 ### 0.5.9 (2026-09-06)
 * (draftkraft) Stopped warnings for expected missing humidity measurements
 
