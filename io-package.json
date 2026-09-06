@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "controme",
-        "version": "0.5.8",
+        "version": "0.5.9",
         "news": {
+            "0.5.9": {
+                "en": "Stopped warnings for expected missing humidity measurements",
+                "de": "Warnungen für erwartungsgemäß fehlende Luftfeuchtigkeitsmessungen entfernt",
+                "ru": "Отключены предупреждения об ожидаемо отсутствующих измерениях влажности",
+                "pt": "Removidos avisos para medições de humidade ausentes esperadas",
+                "nl": "Waarschuwingen voor verwachte ontbrekende vochtmetingen gestopt",
+                "fr": "Suppression des avertissements pour les mesures d'humidité normalement absentes",
+                "it": "Rimossi gli avvisi per le misurazioni di umidità previste come mancanti",
+                "es": "Se eliminaron los avisos de mediciones de humedad ausentes esperadas",
+                "pl": "Usunięto ostrzeżenia o oczekiwanym braku pomiarów wilgotności",
+                "uk": "Прибрано попередження про очікувано відсутні вимірювання вологості",
+                "zh-cn": "停止针对预期缺失的湿度测量发出警告"
+            },
             "0.5.8": {
                 "en": "Fixed writing actual temperatures to KNX sensors with group-address IDs",
                 "de": "Schreiben von Isttemperaturen auf KNX-Sensoren mit Gruppenadress-IDs korrigiert",

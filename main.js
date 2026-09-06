@@ -1187,7 +1187,9 @@ class Controme extends utils.Adapter {
         promises.push(this.setStateChangedAsync(`${room.id}.setpointTemperaturePerm`, permTemp, true));
 
         // Humidity as integer (no decimals)
-        const humidity = this._safeParseValue(room, 'luftfeuchte', 'humidity', raw => parseInt(raw, 10), 0);
+        // Missing humidity values are expected for rooms without a humidity
+        // sensor. Controme returns localized placeholder text in that case.
+        const humidity = this._safeParseValue(room, 'luftfeuchte', 'humidity', raw => parseInt(raw, 10), 0, true);
         promises.push(this.setStateChangedAsync(`${room.id}.humidity`, humidity, true));
 
         // is_temporary_mode: Expecting a boolean value
