@@ -88,6 +88,9 @@ To start the adapter, the following data need to be provided in the admin settin
   Placeholder for the next version (at the beginning of the line):
   ### **WORK IN PROGRESS**
 -->
+### 0.5.8 (2026-09-06)
+* (draftkraft) Fixed writing actual temperatures to KNX sensors with group-address IDs
+
 ### 0.5.7 (2025-02-22)
 * (MadErstam) Made adapter safe to handle different versions of API
 * (MadErstam) Switched from got to axios for future compatibility

@@ -1,8 +1,21 @@
 {
     "common": {
         "name": "controme",
-        "version": "0.5.7",
+        "version": "0.5.8",
         "news": {
+            "0.5.8": {
+                "en": "Fixed writing actual temperatures to KNX sensors with group-address IDs",
+                "de": "Schreiben von Isttemperaturen auf KNX-Sensoren mit Gruppenadress-IDs korrigiert",
+                "ru": "Исправлена запись фактических температур в датчики KNX с идентификаторами групповых адресов",
+                "pt": "Corrigida a escrita de temperaturas reais em sensores KNX com IDs de endereço de grupo",
+                "nl": "Schrijven van werkelijke temperaturen naar KNX-sensoren met groepsadres-ID's opgelost",
+                "fr": "Correction de l'écriture des températures réelles vers les capteurs KNX avec des identifiants d'adresse de groupe",
+                "it": "Corretta la scrittura delle temperature effettive sui sensori KNX con ID di indirizzo di gruppo",
+                "es": "Corregida la escritura de temperaturas reales en sensores KNX con ID de dirección de grupo",
+                "pl": "Naprawiono zapis rzeczywistych temperatur do czujników KNX z identyfikatorami adresów grupowych",
+                "uk": "Виправлено запис фактичних температур у датчики KNX з ідентифікаторами групових адрес",
+                "zh-cn": "修复了向具有组地址 ID 的 KNX 传感器写入实际温度的问题"
+            },
             "0.5.7": {
                 "en": "Made adapter safe to handle different versions of API",
                 "de": "Adapter sicher gemacht, um verschiedene Versionen von API zu verarbeiten",
@@ -131,9 +144,9 @@
             "type": "free",
             "license": "MIT"
         },
-        "readme": "https://github.com/MadErstam/ioBroker.controme/blob/master/README.md",
+        "readme": "https://github.com/draftkraft/ioBroker.controme/blob/main/README.md",
         "icon": "controme.png",
-        "extIcon": "https://raw.githubusercontent.com/MadErstam/ioBroker.controme/main/admin/controme.png",
+        "extIcon": "https://raw.githubusercontent.com/draftkraft/ioBroker.controme/main/admin/controme.png",
         "type": "climate-control",
         "dependencies": [
             {
